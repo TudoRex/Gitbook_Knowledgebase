@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "gitbook-plugin-codeblock-label": "^1.0.1",
+    "gitbook-plugin-sunlight-highlighter": "^0.1.1"
+  }
+}

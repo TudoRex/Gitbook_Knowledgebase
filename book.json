@@ -1,0 +1,3 @@
+{
+	"plugins": ["codeblock-label", "-highlight", "sunlight-highlighter"]
+}

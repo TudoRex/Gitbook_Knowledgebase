@@ -6,4 +6,7 @@
     * [1.2 进程调试](windows_system_programming/process_debug.md)
         * [StackWalk64()失败](windows_system_programming/StackWalk64.md)
         * [CaptureStackBackTrace()成功](windows_system_programming/CaptureStackBackTrace.md)
+* [2.人工智能/深度学习](AI_deep_learning/index.md)
+* [3.科研工具](scientific/index.md)
+    * [Sigmaplot统计绘图](scientific/sigmaplot.md)
 

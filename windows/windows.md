@@ -14,4 +14,7 @@ $(user)/AppData/Local/Microsoft/MSBuild/v4.0/下的xml配置文件
 
 ### Completion Port
 
+### Visual Studio Unicode编码的控制台工程打印中文的方法
+`setlocale(LC_ALL, "chs")`
+
 

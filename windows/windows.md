@@ -49,4 +49,3 @@ $(user)/AppData/Local/Microsoft/MSBuild/v4.0/下的xml配置文件
 	
 	由于throw语句都进行了一次副本拷贝，因此异常对象应该是可以copy构造的。但对于Microsoft Visual C++编译器，异常对象的复制构造函数即使私有的情形，异常对象仍然可以被throw语句正常抛出；但在catch语句的参数是传值时，在catch语句处编译报错：
 
->>>>>>> efe5e316a18482abdf88d4cf2996e2bd56e1fcfb

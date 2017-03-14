@@ -14,6 +14,8 @@
     * [1.4 内核机制](windows/kernel/kernel.md)
         * [IO Completion Port](windows/kernel/iocp.md)
     * [1.5 多核并行编程](multicore/multicore.md)
+* [Web技术](web/web.md)
+	* [python自动交互技术](web/simulation.md)
 * [2.人工智能/深度学习](AI_deep_learning/AI_deep_learning.md)
 * [3.科研工具](scientific/scientific.md)
     * [Sigmaplot统计绘图](scientific/sigmaplot.md)

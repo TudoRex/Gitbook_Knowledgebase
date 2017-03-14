@@ -16,4 +16,4 @@
 ```
 倒数第二个和倒数第三个函数指针可以直接调用Dbghelp.dll中的函数SymGetModuleBase64与SymFunctionTableAccess64。 倒数第四个ReadMemoryRoutine ，可以自己定义一个函数，主要调用ReadProcessMemory。这个函数主要得到STACKFRAME64这个栈帧。
 
-然后通过栈帧的成员AddrPC的offset，可由函数**SymGetSymFromAddr64**得到符号信息，再通过**UnDecorateSymbolName（）**，**SymGetLineFromAddr64()**（）等函数得到具体的函数名，代码行等信息。
+然后通过栈帧的成员AddrPC的offset，可由函数**SymGetSymFromAddr64**得到符号信息，再通过**UnDecorateSymbolName()**，**SymGetLineFromAddr64()**等函数得到具体的函数名，代码行等信息。

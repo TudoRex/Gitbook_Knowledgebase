@@ -19,6 +19,8 @@
 * [人工智能/深度学习](AI_deep_learning/AI_deep_learning.md)
 * [科研工具](scientific/scientific.md)
     * [Sigmaplot统计绘图](scientific/sigmaplot.md)
+* [Web技术](web/web.md)
+    * [python自动交互技术](web/simulation.md)
 * [算法](algorithm/algorithm.md)
     * [树](algorithm/tree/tree.md)
 * [期货投资](future/future.md)

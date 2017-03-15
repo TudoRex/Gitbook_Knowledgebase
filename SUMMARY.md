@@ -14,6 +14,8 @@
     * [4 内核机制](windows/kernel/kernel.md)
         * [IO Completion Port](windows/kernel/iocp.md)
     * [5 多核并行编程](multicore/multicore.md)
+* [语言嵌入混合编程](embeded_language/embeded_language.md)
+    * [1 C++嵌入python](embeded_language/embed_python_into_cpp.md)
 * [类Unix/Linux](unix-like/linux.md)
     * [VLC工程编译](unix-like/VLC/build_project.md)
 * [人工智能/深度学习](AI_deep_learning/AI_deep_learning.md)

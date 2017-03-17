@@ -49,3 +49,27 @@ $(user)/AppData/Local/Microsoft/MSBuild/v4.0/下的xml配置文件
 	
 	由于throw语句都进行了一次副本拷贝，因此异常对象应该是可以copy构造的。但对于Microsoft Visual C++编译器，异常对象的复制构造函数即使私有的情形，异常对象仍然可以被throw语句正常抛出；但在catch语句的参数是传值时，在catch语句处编译报错：
 
+## 运维
+### Windows Server 2012 右键打开命令行（管理员），自动切换到当前目录
+
+```
+Windows Registry Editor Version 5.00
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\runas]
+@="@shell32.dll,-8506"
+"HasLUAShield"=""
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\runas\command]
+@="cmd.exe"
+"IsolatedCommand"="cmd.exe /s /k pushd \"%V\""
+
+```
+
+## windows-classic-examples
+### iocp
+平台： windows10 ， vs2013_x64
+在iocpserverex项目中的myprint调用Windows API WriteConsole(),StringCchVPrintf()实现,
+发现打印了几行之后不能刷新buffer， 改用vprintf实现后没有出现这个问题.原因不明
+
+## 流媒体直播
+- [http://nicoconi.com/2015-09/obs-monaserver-live.html]()
+- [http://blog.eqoe.cn/posts/rtmfp-p2p-live.html]()

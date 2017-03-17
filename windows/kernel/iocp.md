@@ -24,4 +24,10 @@
 ### AcceptEX
 N worker模型， 每个worker均可担任数据和建立通讯套接字的职责
 
+## 高响应能力服务端
+- [http://blog.csdn.net/xiagege3/article/details/8650436]()
+
+ 利用WSAEventSelect检测AcceptEx连接过高
+
+
 

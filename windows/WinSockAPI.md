@@ -46,3 +46,6 @@ GUID guidAcceptEx = WSAID_ACCEPTEX;
 You have to call setsockopt(SOL_SOCKET, SO_UPDATE_ACCEPT_CONTEXT) after AcceptEx() completes. The accepted socket is not fully associated with the properties of the listening socket, and as such will not be in a fully connected state, until SO_UPDATE_ACCEPT_CONTEXT is set. Some winsock API functions are affected by that, including getpeername(), getsockname() and shutdown().
 
 If you use ConnectEx() to make an outbound connection, you have to invoke setsockopt(SOL_SOCKET, SO_UPDATE_CONNECT_CONTEXT) after ConnectEx() completes before you can then use shutdown(). This is documented behavior on MSDN. It does not say the same for AcceptEx() and SO_UPDATE_ACCEPT_CONTEXT, but shutdown() does have a similar restriction for sockets accepted by AcceptEx().
+
+### 有关AcceptEx用WSAIoctl获取失败的问题
+第一次成功， 第二次WSAIoctl成功但是AcceptEx接口为nullptr。

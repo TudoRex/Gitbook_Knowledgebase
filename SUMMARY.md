@@ -18,6 +18,7 @@
     * [1 C++嵌入python](embeded_language/embed_python_into_cpp.md)
 * [分布式计算](distributed_system/distributed_system.md)
     * [Zeroc ICE](distributed_system/ice.md)
+    * [UML软件工程](distributed_system/uml.md)
 * [类Unix/Linux](unix-like/linux.md)
     * [VLC工程编译](unix-like/VLC/build_project.md)
 * [人工智能/深度学习](AI_deep_learning/AI_deep_learning.md)

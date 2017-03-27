@@ -38,4 +38,14 @@ Client
 ### Server-Side Features
 
 ### Client-Side Features
+leader & followers 多线程设计模式
+- [http://www.cnblogs.com/duzouzhe/archive/2009/09/28/1575813.html]()
+总结一下：leader监听， 发生event后,唤醒一个睡眠的follower成为新的leader， 自己处理该event后变为follower
 
+
+### 
+
+
+###### 
+参见DEMO 'Ice/bidir'
+`Ice::ObjectAdapterPtr collocAdapter = communicator->createObjectAdapter("");`

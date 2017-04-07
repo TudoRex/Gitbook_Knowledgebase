@@ -1,4 +1,15 @@
 # Zeroc ICE
+## Python绑定
+### IcePy
+所有接口方法生成依赖于IcePy, 接口中的out属性如何处理
+### winpython 3.3.5.9-64bit下安装Ice（VS2013环境）
+1. 进入vs2013编译命令行（x64）
+‘StartMenu’-》‘Visual Studio Tools’
+2. 替换vs2010为vs2013的环境进行编译
+SET VS100COMNTOOLS=%VS120COMNTOOLS%
+3. 进入D:\WinPython-64bit-3.3.5.9\python-3.3.5.amd64\Scripts
+`pip.exe install zeroc-ice`
+
 
 ## ICE-3.6 Demo解读
 - VC12 中ice_builder Build失败的工程配置问题
@@ -49,3 +60,7 @@ leader & followers 多线程设计模式
 ###### 
 参见DEMO 'Ice/bidir'
 `Ice::ObjectAdapterPtr collocAdapter = communicator->createObjectAdapter("");`
+
+## XLProject 框架
+1. 改写接口类IXLSystemDataProvider
+查阅slice的operation定义， 可以为parameter添加in， out修饰词， 生成我们想要的c++接口

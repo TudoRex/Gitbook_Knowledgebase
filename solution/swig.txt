@@ -1,0 +1,146 @@
+# swig转换CTP
+## python（实验性质）
+## csharp
+继承需要使用public new void OnFrontConnected(), 涉及 new, virtual ,override 修饰词
+一直没有回调， 
+调试过程：
+1. 为所有类加入director特性后出现了回调。csharp中的回调子类方法要用override修饰
+
+### 数据绑定和
+
+###反射实现结构化调用
+#### 反射CThostFtdcInputOrderField
+[http://www.cnblogs.com/wangshenhe/p/3256657.html]()
+```
+Type t = typeof(CThostFtdcInputOrderField)
+var items = t.GetProperties();
+
+```
+
+利用type创建对象
+[http://www.cnblogs.com/zfanlong1314/p/4197383.html]()
+```
+“反射”其实就是利用程序集的元数据信息。 反射可以有很多方法，编写程序时请先导入 System.Reflection 命名空间。
+
+1、假设你要反射一个 DLL 中的类，并且没有引用它（即未知的类型）： 
+Assembly assembly = Assembly.LoadFile("程序集路径，不能是相对路径"); // 加载程序集（EXE 或 DLL） 
+object obj = assembly.CreateInstance("类的完全限定名（即包括命名空间）"); // 创建类的实例 
+
+2、若要反射当前项目中的类（即当前项目已经引用它了）可以为：
+
+Assembly assembly = Assembly.GetExecutingAssembly(); // 获取当前程序集 
+object obj = assembly.CreateInstance("类的完全限定名（即包括命名空间）"); // 创建类的实例，返回为 object 类型，需要强制类型转换
+
+3、也可以为：
+
+Type type = Type.GetType("类的完全限定名"); 
+object obj = type.Assembly.CreateInstance(type); 
+
+======================================================= 
+补充：
+1）反射创建某个类的实例时，必须保证使用类的完全限定名（命名空间 + 类名）。Type.GetType 方法返回 null 则意味搜索元数据中的相关信息失败（反射失败），请确保反射时使用类的完全限定名。
+2）反射功能十分强大，没有什么不能实现的。若实现“跨程序集”，请使用第一种方法创建类的实例，并反射该实例的字段、属性、方法、事件... 然后动态调用之。
+```
+
+利用反射从object获取属性
+[http://stackoverflow.com/questions/1196991/get-property-value-from-string-using-reflection-in-c-sharp]()
+```
+public static object GetPropValue(object src, string propName)
+ {
+     return src.GetType().GetProperty(propName).GetValue(src, null);
+ }
+```
+
+注意区分属性和字段，
+属性的用法看起来类似字段， 本质上是支持set和get的方法，因此可以控制
+
+### DataGridView不能显示bindSource数据的解决办法
+不要使用designer绑定datagridview的DataSource， 要在Form_Load事件中赋值（参考windows用例）
+
+### foreach 获取索引
+```
+foreach(var item in arr)
+        {
+                int index = arr.indexOf(item); //index 为索引值
+                item....
+        }
+```
+
+### List<>结合的tostring方法
+```
+string.Join(",", list);
+```
+### DataTable
+RowChanged(add, change)
+RowDeleted(delete)
+
+## C# winform  组建开发
+[http://www.cnblogs.com/peterzb/archive/2009/05/29/1491891.html]()
+
+System.Reflection.RuntimeMethodInfo
+
+
+## C#中利用invoke实现多线程访问UI控件（STA）
+[http://www.cnblogs.com/hnfxs/p/3192009.html]()
+
+## radiobutton 的事件处理
+```
+//RadioButton新事件
+        public void radioBtn_CheckedChange(object sender, EventArgs e)
+        {
+            if (!((RadioButton)sender).Checked)
+            {
+                return;
+            }
+            string rechargeMoney = string.Empty;
+            switch (((RadioButton)sender).Text.ToString())
+            {
+                case "10":
+                    rechargeMoney = "10";
+                    this.lbl_money_tip.Text = rechargeMoney;
+                    break;
+                case "20":
+                    rechargeMoney = "20";
+                    this.lbl_money_tip.Text = rechargeMoney;
+                    break;
+                case "30":
+                    rechargeMoney = "30";
+                    this.lbl_money_tip.Text = rechargeMoney;
+                    break;
+                case "40":
+                    rechargeMoney = "40";
+                    this.lbl_money_tip.Text = rechargeMoney;
+                    break;
+                case "50":
+                    rechargeMoney = "50";
+                    this.lbl_money_tip.Text = rechargeMoney;
+                    break;
+                case "100":
+                    rechargeMoney = "100";
+                    this.lbl_money_tip.Text = rechargeMoney;
+                    break;
+                default:
+                    break;
+            }
+```
+
+### Controls.OfType<T> 获取该控制下的子控件
+
+### lambda表达式与匿名委托的区别
+[http://www.cnblogs.com/wphl-27/p/5504353.html]()
+[C#中的Lambda表达式和表达式树](http://blog.jobbole.com/84588/)
+
+## KeyEvent
+[http://www.cnblogs.com/junbird-nest/archive/2012/06/01/2531176.html]()
+
+## 使用同一个datasource会导致同步变化
+
+## 从stackframe获取当前函数栈的实际参数
+[https://stackoverflow.com/questions/75076/obtain-parameter-values-from-a-stack-frame-in-net]()
+
+## 当api状态更新时， 更新相应的button
+Invalidate()方法的作用？
+[event入门](http://www.cnblogs.com/BeginnerClassroom/archive/2009/01/11/1373689.html)
+
+## 操作button的事件如果涉及到ui外线程， 需要判断InvokeRequired字段
+listbox只有直接设置datasource 和操作bindinglist类型才可以

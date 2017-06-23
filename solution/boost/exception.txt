@@ -1,0 +1,5 @@
+# boost 异常类（非std::exception 继承）
+[https://stackoverflow.com/questions/8136534/how-to-properly-catch-std-and-boost-exceptions]()
+
+boost 异常捕获要catch exception&引用形式
+[https://theboostcpplibraries.com/boost.exception]()

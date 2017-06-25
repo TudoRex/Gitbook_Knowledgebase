@@ -1,0 +1,25 @@
+# type 类型推导
+## 隐式类型转换
+### Q: 我想利用basic char array作为参数make_tuple
+```
+typedef char nametype[20];
+
+std::tuple<int, nametype> tdata = std::make_tuple(abc);
+```
+会发生从char[20]到char*的隐式类型转换， 如何避免
+### A: 利用reference_wrapper性质， 用std::ref()包装
+
+类型推导， 和decay， 隐式类型转换， thread 传参数有关系
+
+auto 作为函数返回值类型
+[C++11初探：类型推导，auto和decltype](http://www.cnblogs.com/npbool/p/3433360.html)
+
+```
+typedef char nametype[20];
+
+T = nametype;
+using remove_extent_t<T> = typename remove_extent<T>::type
+is_same<remove_extent_t<T> , char >::value
+```
+## 可变参数模板
+[http://www.xuebuyuan.com/280561.html]()

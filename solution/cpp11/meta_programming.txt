@@ -1,0 +1,68 @@
+# C++  模板元编程
+编译期确定的代码
+SFINAE 
+boost::hana
+boost::mpl
+[SFINAE ]()
+
+## 泛型编程
+boost/fusion/map
+
+[http://blog.chinaunix.net/uid-28595538-id-5020006.html](基于元编程实现的对象缓冲池)
+
+有关boost::fusion::map正确添加seqence类型的做法
+```
+fu::map<
+	fu::pair<int, string>
+	fu::pair<long, string>
+> tb_map;
+```
+使用push_back 添加sequence后， 得到的类型是joint_view ， 用at_key访问不到.
+[https://stackoverflow.com/questions/19999964/boostfusion-accessing-key-type-of-joint-view-as-map](at_key usage with joint_view)
+
+map是固定的， 利用push_back可以得到一个joint_view类型, joint_view的at_key是const的, 
+可以构造多个map的joint_view 去查询, 但map本身是不会被插入的
+
+erase_key也是同样的道理
+
+可以对原始map类型取at_key去修改类型
+```
+
+#include <boost/fusion/container.hpp>
+#include <boost/fusion/include/at_key.hpp>
+#include <boost/fusion/sequence.hpp>
+
+struct Login;
+struct PasswordUpdate;
+struct OrderInsert;
+
+namespace fu = boost::fusion;
+using namespace std;
+
+struct visitor
+{
+	template<typename T>
+	void operator() (const T&t) const
+	{
+		cout << "key_type" << typeid(T::first_type).name()
+				<< ", value=" << t.second << endl;
+	}
+}
+
+int main()
+{
+	typedef fu::map<
+		fu::pair<Login, const char*>,
+		fu::pair<PasswordUpdate, const char*>
+	> tb_map;
+
+	tb_map m(fu::make_pair<>("1000"), fu::make_pair<PaawordUpdate>("2001"));
+
+	auto m_view = fu::push_back(m, fu::pair<OrderInsert, const char*>("abc"));
+	// fu::push_back, fu::erase_key 生成的是joint_view类型, 不是新map
+	fu::at_key<PasswordUpdate>(m) = "a";
+	cout << fu::at_key<PasswordUpdate>(fu::as_map(m_view)) << endl;
+	fu::for_each(m_view, visitor());
+}
+```
+

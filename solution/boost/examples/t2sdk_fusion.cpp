@@ -54,3 +54,37 @@ int _tmain(int argc, _TCHAR* argv[])
 	return 0;
 }
 
+#include <boost/fusion/container.hpp>
+#include <boost/fusion/include/at_key.hpp>
+#include <boost/fusion/sequence.hpp>
+
+struct Login;
+struct PasswordUpdate;
+
+void RunFusion()
+{
+    typedef fusion::map<
+	fusion::pair<Login, const char*>,
+	fusion::pair<PasswordUpdate, const char*>
+    > tb_map;
+
+    tb_map m(fusion::make_pair<Login>("1000"), fusion::make_pair<>("2001"));
+    cout << :"size m = " << fusion::size(m) << endl;
+    // push_back, erase_key生成的是joint_view类型
+    //
+    //
+    auto m_view = fusion::push_back(m, fusion::pair<OrderInsert, const char*>("abc"));
+    cout << "size m_view:" << fusion::size(m_view) << endl;
+    cout << "PasswordUpdate In view:" << fusion::at_key<Password>(fusion::as_map(m_view)) <<endl;
+    fusion::for_each(m_view, Visitor());
+}
+
+struct Visitor
+{
+    template <typename T>
+    void operator()(const T&t) const
+    {
+	cout << "fusion::pair key_type:" << typeid(T::first_type).name()
+	    << ", value=" << t.second << endl;
+    }
+}

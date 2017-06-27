@@ -1,0 +1,25 @@
+# Boost.Fusion
+[http://www.cnblogs.com/cutepig/archive/2010/09/16/1826506.html]()演示for_each visitor
+[http://www.boost.org/doc/libs/1_64_0/libs/fusion/doc/html/index.html]()
+
+[http://rodgert.github.io/2014/09/09/type-driven-wire-protocols-with-boost-fusion-pt1/]()
+
+# 有关 1.63版本 FUSION_MAX_VECTOR_SIZE 大于50的问题
+默认情况下使用预编译的header进行定义， 因此不能超过代码中的50个限制（cpp03）， 然而c++11 是支持variadic的template的
+参考[https://stackoverflow.com/questions/6425178/boost-tuple-increasing-maximum-number-of-elements]()
+宏*BOOST_FUSION_DONT_USE_PREPROCESSED_FILES*
+
+## regenerate mpl, fusion headers(avoid fixed entries)
+<boost-source-dir>/libs/mpl/preprocessed
+
+根本原因
+<boost/fusion/container/vector/vector_fwd.hpp>中
+<boost/fusion/container/vector/detail/config.hpp>中针对BOOST_MSVC 1800的特殊修正
+
+192.168.16.57
+Administrator
+abc@123
+
+16.2:
+guest
+xlrj@1010102

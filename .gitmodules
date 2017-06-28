@@ -1,0 +1,3 @@
+[submodule "solution/boost/examples/boost_fusion_t2sdk"]
+	path = solution/boost/examples/boost_fusion_t2sdk
+	url = https://github.com/TudoRex/boost_fusion_t2sdk.git

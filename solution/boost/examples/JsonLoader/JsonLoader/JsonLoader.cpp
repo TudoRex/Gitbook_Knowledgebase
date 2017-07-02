@@ -43,16 +43,23 @@ namespace keys
 
 #include <string>
 
+struct Info
+{
+	int index;
+	const char* msg;
+};
 struct MyUserLogin
 {
-	std::string UserID;
 	double		Password;
+	std::string UserID;
+	Info			volume;
 };
+
 
 BOOST_FUSION_ADAPT_ASSOC_STRUCT(
 	::MyUserLogin,
 	(UserID, keys::ufx_dict_1)
-	(Password, keys::ufx_dict_2)
+	(volume.msg, keys::ufx_dict_2)
 )
 
 enum KeyIndex : unsigned 
@@ -71,14 +78,15 @@ struct MapVisitor
 		std::cout << "{" <<typeid(T).name()<< "}" << std::endl;
 		std::cout << "first type:{ "<< typeid(T::first_type).name() <<"}"<< std::endl;
 		std::cout << "second type:{" << typeid(T::second_type).name() <<"}"<< std::endl;
+		cout << "---------------------------" << endl;
 	}
 
-	template<typename V>
-	void operator() (const fusion::pair<V, double>& p) const
-	{
-		std::cout << " [Value = double]" << std::endl;
-
-	}
+// 	template<typename V>
+// 	void operator() (const fusion::pair<V, double>& p) const
+// 	{
+// 		std::cout << " [Value = double]" << std::endl;
+// 
+// 	}
 };
 
 
@@ -103,3 +111,7 @@ int main()
     return 0;
 }
 
+//////////////////////////////////////////////////////////////////////////
+//t2sdk  µ×²ã¼Ü¹¹
+//1. ÓÃ
+//////////////////////////////////////////////////////////////////////////
